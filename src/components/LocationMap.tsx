@@ -11,9 +11,9 @@ const LocationMap = () => {
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
 
-    // Initialize map with exact coordinates for Kaena Restaurant & Bar in Arorangi, Rarotonga
-    const kaenaCoordinates = [-21.2428, -159.8295]; // Updated to exact location
-    map.current = L.map(mapContainer.current).setView(kaenaCoordinates, 17); // Increased zoom for better visibility
+    // Initialize map with coordinates along the main road in Arorangi, Rarotonga
+    const kaenaCoordinates = [-21.2425, -159.8287]; // Adjusted to be along the main road
+    map.current = L.map(mapContainer.current).setView(kaenaCoordinates, 17); // Keeping zoom level for good visibility
 
     // Add OpenStreetMap tiles (free)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
