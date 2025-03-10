@@ -11,9 +11,9 @@ const LocationMap = () => {
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
 
-    // Initialize map with coordinates along the main road in Arorangi, Rarotonga
-    const kaenaCoordinates = [-21.2425, -159.8287]; // Adjusted to be along the main road
-    map.current = L.map(mapContainer.current).setView(kaenaCoordinates, 17); // Keeping zoom level for good visibility
+    // Initialize map with coordinates directly on the main road (Ara Tapu) in Arorangi, Rarotonga
+    const kaenaCoordinates = [-21.2427, -159.8293]; // Adjusted to be directly on the main road
+    map.current = L.map(mapContainer.current).setView(kaenaCoordinates, 18); // Increased zoom to better see the road
 
     // Add OpenStreetMap tiles (free)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
