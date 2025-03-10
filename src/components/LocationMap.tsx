@@ -12,7 +12,7 @@ const LocationMap = () => {
     if (!mapContainer.current || map.current) return;
 
     // Initialize map with coordinates directly on the main road (Ara Tapu) in Arorangi, Rarotonga
-    const kaenaCoordinates = [-21.2427, -159.8293]; // Adjusted to be directly on the main road
+    const kaenaCoordinates = [-21.2335, -159.8162]; // Adjusted to be directly on Ara Tapu main road
     map.current = L.map(mapContainer.current).setView(kaenaCoordinates, 18); // Increased zoom to better see the road
 
     // Add OpenStreetMap tiles (free)
