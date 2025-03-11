@@ -1,37 +1,69 @@
+# Welcome to your Lovable project
 
-# Kaena Restaurant Website
+## Project info
 
-A simple, static website for Kaena Restaurant & Takeaway.
+**URL**: https://lovable.dev/projects/4e639708-71a6-4f81-9c51-bc052a7d4587
 
-## Setup Instructions
+## How can I edit this code?
 
-1. Copy all files to your web server directory (e.g., htdocs for XAMPP)
-2. Create an `images` folder in the root directory
-3. Copy all image files from the original `public/lovable-uploads` folder to your new `images` folder
-4. Rename the images as follows:
-   - Background image: `background.png` (from 6fbcf6a8-d8ce-4373-9613-ae49f4428b51.png)
-   - Logo: `logo.png` (from 2690d626-944e-4fd2-9dc3-951c7a9e5d26.png)
-   - Food images: `food1.png`, `food2.png`, etc. (from the other image files)
-5. Open the website through your web server (e.g., http://localhost/kaena-restaurant)
+There are several ways of editing your application.
 
-## Image References
+**Use Lovable**
 
-The slideshow requires these specific image files in your images folder:
-- food1.png (BBQ ribs with mashed potatoes)
-- food2.png (Fettuccine with garlic bread)
-- food3.png (Onion rings with dip)
-- food4.png (Fried chicken with rice)
-- food5.png (Breaded shrimp with dip)
-- food6.png (Grilled pineapple with fried egg)
-- food7.png (BBQ chicken with yellow rice)
-- food8.png (Steamed fish with garnish)
-- food9.png (Chocolate milkshake)
-- food10.png (Fried chicken with sauce)
-- food11.png (BBQ chicken with yellow rice)
-- food12.png (Onion rings)
-- food13.png (Breaded shrimp)
-- food14.png (Grilled pineapple with egg)
+Simply visit the [Lovable Project](https://lovable.dev/projects/4e639708-71a6-4f81-9c51-bc052a7d4587) and start prompting.
 
-You can find the original images in the public/lovable-uploads folder with their UUID filenames.
+Changes made via Lovable will be committed automatically to this repo.
 
-No additional setup or Node.js installation is required. This is now a standard static website that can be served by any web server.
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with .
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/4e639708-71a6-4f81-9c51-bc052a7d4587) and click on Share -> Publish.
+
+## I want to use a custom domain - is that possible?
+
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
