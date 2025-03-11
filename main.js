@@ -2,20 +2,20 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Slideshow functionality
   const images = [
-    "images/food1.png", // BBQ ribs with mashed potatoes
-    "images/food2.png", // Fettuccine with garlic bread
-    "images/food3.png", // Onion rings with dip
-    "images/food4.png", // Fried chicken with rice
-    "images/food5.png", // Breaded shrimp with dip
-    "images/food6.png", // Grilled pineapple with fried egg
-    "images/food7.png", // BBQ chicken with yellow rice
-    "images/food8.png", // Steamed fish with garnish
-    "images/food9.png", // Chocolate milkshake
-    "images/food10.png", // Fried chicken with sauce
-    "images/food11.png", // BBQ chicken with yellow rice
-    "images/food12.png", // Onion rings
-    "images/food13.png", // Breaded shrimp
-    "images/food14.png"  // Grilled pineapple with egg
+    "/lovable-uploads/3b538f6c-340a-4609-82bf-7da4bbc9ab76.png", // BBQ ribs with mashed potatoes
+    "/lovable-uploads/41e0117a-ae62-43d7-a48a-726da35c8309.png", // Fettuccine with garlic bread
+    "/lovable-uploads/43a6e1a8-6b5f-496f-b424-cb52af9ea70b.png", // Onion rings with dip
+    "/lovable-uploads/57e877e2-6e94-4c0e-96e2-417193e8a7a9.png", // Fried chicken with rice
+    "/lovable-uploads/367966ba-fb10-4410-839d-696a9103d32f.png", // Breaded shrimp with dip
+    "/lovable-uploads/ae8a36f7-1aee-4f47-9a1a-3b09cfa76b24.png", // Grilled pineapple with fried egg
+    "/lovable-uploads/7628f0f0-1d2d-4036-af92-c77ebf9e3308.png", // BBQ chicken with yellow rice
+    "/lovable-uploads/a56f8c31-93c5-497f-af96-6b6b0570c3d0.png", // Steamed fish with garnish
+    "/lovable-uploads/b79072b7-ba7a-49d3-b8ba-ca0b3a3e7494.png", // Chocolate milkshake
+    "/lovable-uploads/7e4ca4be-9876-4b3c-be46-aaafb1402bad.png", // Fried chicken with sauce
+    "/lovable-uploads/a7b11d4c-5384-4eb3-91b5-d4938326ed3c.png", // BBQ chicken with yellow rice
+    "/lovable-uploads/c86d15ff-806b-4759-9152-1c6ecf9a7a59.png", // Onion rings
+    "/lovable-uploads/5f43bec8-4e6c-430e-8c10-1c95ac303ba9.png", // Breaded shrimp
+    "/lovable-uploads/a7619c33-dcb7-41d9-bdcc-5332fdf8ddda.png"  // Grilled pineapple with egg
   ];
 
   let currentSlide = 0;
