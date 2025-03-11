@@ -1,121 +1,112 @@
 
-// Initialize the slideshow when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  initSlideshow();
-  initMap();
-  initInfoCard();
-  initSaveButton();
-});
+// Array of image paths for the slideshow
+const images = [
+  'images/food1.png',  // BBQ ribs with mashed potatoes
+  'images/food2.png',  // Fettuccine with garlic bread
+  'images/food3.png',  // Onion rings with dip
+  'images/food4.png',  // Fried chicken with rice
+  'images/food5.png',  // Breaded shrimp with dip
+  'images/food6.png',  // Grilled pineapple with fried egg
+  'images/food7.png',  // BBQ chicken with yellow rice
+  'images/food8.png',  // Steamed fish with garnish
+  'images/food9.png',  // Chocolate milkshake
+  'images/food10.png', // Fried chicken with sauce
+  'images/food11.png', // BBQ chicken with yellow rice
+  'images/food12.png', // Onion rings
+  'images/food13.png', // Breaded shrimp
+  'images/food14.png'  // Grilled pineapple with egg
+];
 
-// Slideshow initialization
+// Initialize variables
+let currentSlideIndex = 0;
+const slideshowContainer = document.getElementById('slideshow-container');
+const slideIndicators = document.getElementById('slide-indicators');
+
+// Create initial slide elements
 function initSlideshow() {
-  const slideshowContainer = document.getElementById('slideshow-container');
-  const slideIndicators = document.getElementById('slide-indicators');
-  const prevButton = document.getElementById('prev-slide');
-  const nextButton = document.getElementById('next-slide');
+  // Clear existing content
+  slideshowContainer.innerHTML = '';
+  slideIndicators.innerHTML = '';
   
-  // Array of image paths for the slideshow
-  const images = [
-    'images/food1.png',
-    'images/food2.png',
-    'images/food3.png',
-    'images/food4.png',
-  ];
-  
-  let currentIndex = 0;
-  
-  // Create the slides
-  images.forEach((src, index) => {
+  // Create slides
+  images.forEach((img, index) => {
     const slide = document.createElement('div');
-    slide.className = 'absolute inset-0 transition-opacity duration-300';
-    slide.style.opacity = index === 0 ? '1' : '0';
-    slide.style.backgroundImage = `url('${src}')`;
-    slide.style.backgroundSize = 'cover';
-    slide.style.backgroundPosition = 'center';
+    slide.className = `absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+    slide.id = `slide-${index}`;
+    
+    const image = document.createElement('img');
+    image.src = img;
+    image.alt = `Kaena Restaurant Food ${index + 1}`;
+    image.className = 'w-full h-full object-contain';
+    
+    slide.appendChild(image);
     slideshowContainer.appendChild(slide);
     
-    // Create indicators
+    // Create indicator
     const indicator = document.createElement('button');
-    indicator.className = 'w-3 h-3 rounded-full bg-white/50 hover:bg-white/70 transition-colors';
+    indicator.className = `w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white w-4' : 'bg-white/50 hover:bg-white/70'}`;
     indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+    indicator.onclick = () => goToSlide(index);
     
-    if (index === 0) {
-      indicator.classList.add('bg-white');
-    }
-    
-    indicator.addEventListener('click', () => goToSlide(index));
     slideIndicators.appendChild(indicator);
   });
-  
-  // Set up event listeners for next/prev buttons
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateSlideshow();
-  });
-  
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateSlideshow();
-  });
-  
-  // Function to go to a specific slide
-  function goToSlide(index) {
-    currentIndex = index;
-    updateSlideshow();
-  }
-  
-  // Update the slideshow display
-  function updateSlideshow() {
-    const slides = slideshowContainer.children;
-    const indicators = slideIndicators.children;
-    
-    // Update slides
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.opacity = i === currentIndex ? '1' : '0';
-    }
-    
-    // Update indicators
-    for (let i = 0; i < indicators.length; i++) {
-      if (i === currentIndex) {
-        indicators[i].classList.add('bg-white');
-        indicators[i].classList.remove('bg-white/50');
-      } else {
-        indicators[i].classList.remove('bg-white');
-        indicators[i].classList.add('bg-white/50');
-      }
-    }
-  }
-  
-  // Auto-advance slideshow
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateSlideshow();
-  }, 5000);
 }
 
-// Map initialization
-function initMap() {
-  // Create a map centered at the restaurant location
-  const map = L.map('map-container').setView([-21.2524, -159.8132], 14);
-
-  // Add the OpenStreetMap tiles
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  // Add a marker for the restaurant location
-  const marker = L.marker([-21.2524, -159.8132]).addTo(map);
-  marker.bindPopup("<b>Kaena Restaurant & Bar</b><br>Arorangi, Rarotonga").openPopup();
+// Change slide
+function goToSlide(index) {
+  // Hide current slide
+  const currentSlide = document.getElementById(`slide-${currentSlideIndex}`);
+  currentSlide.classList.remove('opacity-100');
+  currentSlide.classList.add('opacity-0');
+  
+  // Update indicator
+  const currentIndicator = slideIndicators.children[currentSlideIndex];
+  currentIndicator.classList.remove('bg-white', 'w-4');
+  currentIndicator.classList.add('bg-white/50');
+  
+  // Update current index
+  currentSlideIndex = index;
+  
+  // Show new slide
+  const newSlide = document.getElementById(`slide-${currentSlideIndex}`);
+  newSlide.classList.remove('opacity-0');
+  newSlide.classList.add('opacity-100');
+  
+  // Update indicator
+  const newIndicator = slideIndicators.children[currentSlideIndex];
+  newIndicator.classList.remove('bg-white/50');
+  newIndicator.classList.add('bg-white', 'w-4');
 }
 
-// Info card initialization
-function initInfoCard() {
-  const toggleButton = document.getElementById('toggle-info-card');
-  const infoCardContent = document.getElementById('info-card-content');
-  const chevronDown = document.getElementById('chevron-down');
-  const chevronUp = document.getElementById('chevron-up');
-  
-  toggleButton.addEventListener('click', function() {
+// Next slide
+function nextSlide() {
+  goToSlide((currentSlideIndex + 1) % images.length);
+}
+
+// Previous slide
+function prevSlide() {
+  goToSlide((currentSlideIndex - 1 + images.length) % images.length);
+}
+
+// Add event listeners to buttons
+document.getElementById('next-slide').addEventListener('click', nextSlide);
+document.getElementById('prev-slide').addEventListener('click', prevSlide);
+
+// Auto-advance slideshow
+setInterval(nextSlide, 5000);
+
+// Initialize slideshow
+initSlideshow();
+
+// Toggle info card on mobile
+const infoCard = document.getElementById('info-card');
+const infoCardContent = document.getElementById('info-card-content');
+const toggleInfoCardButton = document.getElementById('toggle-info-card');
+const chevronDown = document.getElementById('chevron-down');
+const chevronUp = document.getElementById('chevron-up');
+
+if (toggleInfoCardButton) {
+  toggleInfoCardButton.addEventListener('click', () => {
     if (infoCardContent.classList.contains('hidden')) {
       infoCardContent.classList.remove('hidden');
       chevronDown.classList.add('hidden');
@@ -126,38 +117,41 @@ function initInfoCard() {
       chevronUp.classList.add('hidden');
     }
   });
-  
-  // On mobile, hide the content by default
-  if (window.innerWidth < 768) {
-    infoCardContent.classList.add('hidden');
-  }
-  
-  // Update on window resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 768) {
-      infoCardContent.classList.remove('hidden');
-    } else if (!infoCardContent.classList.contains('hidden')) {
-      chevronDown.classList.add('hidden');
-      chevronUp.classList.remove('hidden');
-    }
-  });
 }
 
 // Save button functionality
-function initSaveButton() {
-  const saveButton = document.getElementById('save-button');
-  const heartIcon = document.getElementById('heart');
-  
-  saveButton.addEventListener('click', function() {
-    if (heartIcon.hasAttribute('fill') && heartIcon.getAttribute('fill') === 'currentColor') {
-      heartIcon.setAttribute('fill', 'none');
-      saveButton.classList.remove('border-red-500');
-      saveButton.classList.add('border-black');
+const saveButton = document.getElementById('save-button');
+const heart = document.getElementById('heart');
+let isSaved = false;
+
+if (saveButton) {
+  saveButton.addEventListener('click', () => {
+    isSaved = !isSaved;
+    if (isSaved) {
+      saveButton.innerText = 'Saved ';
+      saveButton.classList.add('text-red-500', 'border-red-500', 'hover:bg-red-50');
+      saveButton.classList.remove('text-black', 'border-black', 'hover:bg-gray-100');
+      heart.setAttribute('fill', 'currentColor');
     } else {
-      heartIcon.setAttribute('fill', 'currentColor');
-      heartIcon.setAttribute('stroke', 'none');
-      saveButton.classList.remove('border-black');
-      saveButton.classList.add('border-red-500');
+      saveButton.innerText = 'Save ';
+      saveButton.classList.remove('text-red-500', 'border-red-500', 'hover:bg-red-50');
+      saveButton.classList.add('text-black', 'border-black', 'hover:bg-gray-100');
+      heart.setAttribute('fill', 'none');
     }
+    saveButton.appendChild(heart.cloneNode(true));
   });
+}
+
+// Initialize map
+const mapContainer = document.getElementById('map-container');
+
+if (mapContainer && L) {
+  const map = L.map('map-container').setView([-21.250, -159.786], 14);
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  const marker = L.marker([-21.250, -159.786]).addTo(map);
+  marker.bindPopup("<b>Kaena Restaurant & Bar</b><br>Near Rarotongan Beach Resort").openPopup();
 }
