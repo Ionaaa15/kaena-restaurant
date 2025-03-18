@@ -20,8 +20,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        'cursive': ['"Brush Script MT"', '"Brush Script Std"', 'cursive'],
-        'kaena': ['Helvetica', 'Arial', 'sans-serif'],
+        'cursive': ['"Great Vibes"', 'Tangerine', 'cursive'],
+        'kaena': ['"Great Vibes"', 'Tangerine', 'cursive'],
         'script': ['"Lucida Handwriting"', '"Brush Script MT"', 'cursive'],
       },
       colors: {
